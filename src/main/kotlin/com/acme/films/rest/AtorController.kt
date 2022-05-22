@@ -9,7 +9,7 @@ import io.micronaut.http.annotation.Post
 import io.micronaut.http.annotation.Put
 import org.slf4j.LoggerFactory
 
-@Controller("/")
+@Controller("/ator")
 class AtorController(
     private val atorRepository: AtorRepository
 ) {
@@ -17,25 +17,25 @@ class AtorController(
     private val logger = LoggerFactory.getLogger(AtorController::class.java)
 
     @Get
-    fun listarTodos(): MutableIterable<Ator> {
+    fun listarAtores(): MutableIterable<Ator> {
         logger.info("Listar todos os atores")
         return atorRepository.findAll()
     }
 
     @Post
-    fun gravar(ator: Ator): Ator {
+    fun gravarAtor(ator: Ator): Ator {
         logger.info("Gravar ator: $ator")
         return atorRepository.save(ator)
     }
 
     @Put
-    fun atualizar(ator: Ator): Ator {
+    fun atualizarAtor(ator: Ator): Ator {
         logger.info("Atualizar ator: $ator")
         return atorRepository.update(ator)
     }
 
     @Delete("/{id}")
-    fun excluir(id: Short){
+    fun excluirAtor(id: Short){
         logger.info("Excluir Ator id $id")
         atorRepository.deleteById(id)
     }
